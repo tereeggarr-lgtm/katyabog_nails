@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Запись на маникюр</title>
+  <title>Катя | Маникюр Петропавловск</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -16,9 +16,31 @@
       max-width: 450px;
       margin: 0 auto;
     }
+    .header-profile {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .header-profile h1 {
+      font-size: 20px;
+      color: #f7b5b7;
+      margin: 0 0 4px 0;
+    }
+    .header-profile p {
+      font-size: 13px;
+      color: #a38c84;
+      margin: 0;
+    }
+    .insta-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #e8d0c5;
+      text-decoration: none;
+      border-bottom: 1px dotted #e8d0c5;
+    }
     h2 { 
-      font-size: 16px; 
-      margin-bottom: 10px; 
+      font-size: 15px; 
+      margin-bottom: 8px; 
       color: #e8d0c5;
     }
     .section { 
@@ -28,14 +50,11 @@
       margin-bottom: 16px;
       border: 1px solid #3d2b29;
     }
-    
-    /* Стили для кнопок-колонок */
     .grid { 
       display: flex; 
       flex-direction: column; 
       gap: 8px; 
     }
-    
     .btn-option {
       width: 100%;
       padding: 12px 14px;
@@ -56,7 +75,13 @@
       font-weight: bold;
       box-shadow: 0 2px 8px rgba(122, 31, 39, 0.4);
     }
-
+    .service-desc {
+      font-size: 12px;
+      color: #a38c84;
+      margin-top: 4px;
+      padding-left: 2px;
+      line-height: 1.4;
+    }
     .counter-box {
       display: flex;
       align-items: center;
@@ -74,10 +99,8 @@
       font-size: 20px;
       cursor: pointer;
     }
-
     .subtext { font-size: 12px; color: #a38c84; margin-top: 6px; line-height: 1.4; }
-
-    /* Итоговая карточка */
+    
     .summary-card {
       background: linear-gradient(145deg, #2e1d1c, #211413);
       border: 1px solid #542226;
@@ -111,38 +134,70 @@
       margin-top: 16px;
       box-sizing: border-box;
     }
+    .btn-dikidi {
+      display: block;
+      width: 100%;
+      background: #7a1f27;
+      color: #ffffff;
+      text-align: center;
+      padding: 14px 0;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 10px;
+      box-sizing: border-box;
+      border: 1px solid #9e2a34;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
 
-  <!-- Основные услуги -->
+  <div class="header-profile">
+    <h1>Маникюр • Петропавловск</h1>
+    <p>Качественное покрытие и эстетика</p>
+    <a href="https://instagram.com/katyabog_nail" target="_blank" class="insta-link">Instagram: @katyabog_nail</a>
+  </div>
+
   <div class="section">
     <h2>Выберите услугу</h2>
     <div class="grid" id="services">
-      <button class="btn-option active" onclick="selectService('manicure_basic', 4000, 'Маникюр/укрепление/гигиена')">Маникюр / гигиена — 4 000 ₸</button>
-      <button class="btn-option" onclick="selectService('manicure_nude', 5500, 'Маникюр/укрепление/нюд')">Маникюр / укрепление / нюд — 5 500 ₸</button>
-      <button class="btn-option" onclick="selectService('manicure_design', 6000, 'Маникюр/укрепление/дизайн')">Маникюр / дизайн / однотон — 6 000 ₸</button>
-      <button class="btn-option" onclick="selectService('ext', 6500, 'Наращивание ногтей')">Наращивание ногтей (от 6 500 ₸)</button>
-      <button class="btn-option" onclick="selectService('removal_only', 1500, 'Только снятие покрытия')">Только снятие — 1 500 ₸</button>
+      <div>
+        <button class="btn-option active" onclick="selectService('manicure_basic', 4000, 'Маникюр / гигиена')">Маникюр / гигиена — 4 000 ₸</button>
+        <div class="service-desc">• Комби-маникюр • Опил • Снятие любого покрытия • Уход маслом • Лечебный лак</div>
+      </div>
+      <div>
+        <button class="btn-option" onclick="selectService('manicure_nude', 5500, 'Маникюр / укрепление / нюд / молочка')">Маникюр / укрепление / нюд / молочка — 5 500 ₸</button>
+        <div class="service-desc">• Покрытие мое • Комби-маникюр • Укрепление гелем/акригелем • Поднятие клюющих ногтей • Достроить параллели/точка вроста • Ремонт 1-2 ногтей • Исправление архитектуры</div>
+      </div>
+      <div>
+        <button class="btn-option" onclick="selectService('manicure_design', 6000, 'Маникюр / дизайн / однотонное')">Маникюр / дизайн / однотонное — 6 000 ₸</button>
+        <div class="service-desc">• Покрытие мое • Комби-маникюр • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели • Ремонт 1-2 ногтей • Исправление архитектуры • ДИЗАЙН: френч, стемпинг, втирка, стразы, наклейки</div>
+      </div>
+      <div>
+        <button class="btn-option" onclick="selectService('ext', 6500, 'Наращивание ногтей')">Наращивание ногтей (от 6 500 ₸)</button>
+        <div class="service-desc">(Френч / дизайн / втирка / несложный рисунок уже входят в стоимость)</div>
+      </div>
+      <div>
+        <button class="btn-option" onclick="selectService('removal_only', 1500, 'Только снятие покрытия')">Только снятие — 1 500 ₸</button>
+      </div>
     </div>
   </div>
 
-  <!-- Выбор длины для наращивания -->
   <div class="section" id="length-section" style="display: none;">
     <h2>Длина наращивания</h2>
     <div class="grid" id="length-options">
-      <button class="btn-option active" onclick="selectLength('Длина 0', 6500)">Длина 0 — 6 500 ₸</button>
-      <button class="btn-option" onclick="selectLength('Длина 1–2', 7500)">Длина 1–2 — 7 500 ₸</button>
-      <button class="btn-option" onclick="selectLength('Длина 3–4', 8000)">Длина 3–4 — 8 000 ₸</button>
-      <button class="btn-option" onclick="selectLength('Длина 5', 9000)">Длина 5 — 9 000 ₸</button>
-      <button class="btn-option" onclick="selectLength('Длина 6', 9500)">Длина 6 — 9 500 ₸</button>
-      <button class="btn-option" onclick="selectLength('Длина 7', 10000)">Длина 7 — 10 000 ₸</button>
+      <button class="btn-option active" onclick="selectLength('Длина 0', 6500)">Наращивание (Длина 0) — 6 500 ₸</button>
+      <button class="btn-option" onclick="selectLength('Длина 1–2', 7500)">Наращивание (Длина 1–2) — 7 500 ₸</button>
+      <button class="btn-option" onclick="selectLength('Длина 3–4', 8000)">Наращивание (Длина 3–4) — 8 000 ₸</button>
+      <button class="btn-option" onclick="selectLength('Экстра-длина 5', 9000)">Экстра-длина 5 — 9 000 ₸</button>
+      <button class="btn-option" onclick="selectLength('Экстра-длина 6', 9500)">Экстра-длина 6 — 9 500 ₸</button>
+      <button class="btn-option" onclick="selectLength('Экстра-длина 7', 10000)">Экстра-длина 7 — 10 000 ₸</button>
     </div>
   </div>
 
-  <!-- Дополнительный дизайн -->
   <div class="section" id="design-section">
     <h2>Дополнительный дизайн</h2>
     <div class="grid">
@@ -151,7 +206,6 @@
     <div class="subtext">Объёмный дизайн или лепка на 2 ногтя.</div>
   </div>
 
-  <!-- Донаращивание / Ремонт -->
   <div class="section">
     <h2>Донаращивание / Ремонт</h2>
     <div class="counter-box">
@@ -159,10 +213,9 @@
       <span id="repair-count" style="font-weight: bold;">0</span>
       <button class="counter-btn" onclick="updateRepair(1)">+</button>
     </div>
-    <div class="subtext">1–2 ногтя входят в стоимость комплекса. Начиная с 3-го ногтя — +500 ₸ за 1 ноготь.</div>
+    <div class="subtext">1–2 ногтя входят в стоимость комплекса (при укреплении/дизайне). Начиная с 3-го ногтя — +500 ₸ за 1 ноготь.</div>
   </div>
 
-  <!-- Итоговая карточка записи -->
   <div class="summary-card">
     <h2>Ваш визит</h2>
     <div class="summary-row">
@@ -176,7 +229,9 @@
       <span class="total-price" id="total-price-text">4 000 ₸</span>
     </div>
 
-    <a href="#" id="wa-link" target="_blank" class="btn-whatsapp">Отправить запись в WhatsApp</a>
+    <a href="#" id="wa-link" target="_blank" class="btn-whatsapp">Записаться через WhatsApp</a>
+    <a href="https://dikidi.ru/2024308" target="_blank" class="btn-dikidi">Онлайн-запись (Dikidi)</a>
+    
     <div class="subtext" style="text-align: center; margin-top: 10px;">
       Расчёт предварительный. Детали мастера уточняют при записи.
     </div>
@@ -185,11 +240,11 @@
 </div>
 
 <script>
-  const PHONE_NUMBER = "77001234567"; // Замените на свой номер WhatsApp (без +)
+  const PHONE_NUMBER = "787713613240".replace(/^78/, '7'); // Указан ваш номер 87713613240
 
   let currentService = 'manicure_basic';
   let basePrice = 4000;
-  let serviceName = 'Маникюр/укрепление/гигиена';
+  let serviceName = 'Маникюр / гигиена';
   let lengthName = '';
   let has3D = false;
   let repairCount = 0;
@@ -243,13 +298,19 @@
       extraHTML += `<div class="summary-row"><span>3D-фигурки / лепка</span><span>+500 ₸</span></div>`;
     }
 
-    if (repairCount > 2) {
-      let extraRepairs = repairCount - 2;
-      let repairPrice = extraRepairs * 500;
-      total += repairPrice;
-      extraHTML += `<div class="summary-row"><span>Донаращивание (${repairCount} шт.)</span><span>+${repairPrice} ₸</span></div>`;
+    if (currentService !== 'manicure_basic' && currentService !== 'removal_only') {
+      if (repairCount > 2) {
+        let extraRepairs = repairCount - 2;
+        let repairPrice = extraRepairs * 500;
+        total += repairPrice;
+        extraHTML += `<div class="summary-row"><span>Донаращивание (${repairCount} шт.)</span><span>+${repairPrice} ₸</span></div>`;
+      } else if (repairCount > 0) {
+        extraHTML += `<div class="summary-row"><span>Донаращивание (${repairCount} шт.)</span><span>Бесплатно</span></div>`;
+      }
     } else if (repairCount > 0) {
-      extraHTML += `<div class="summary-row"><span>Донаращивание (${repairCount} шт.)</span><span>Бесплатно</span></div>`;
+      let repairPrice = repairCount * 500;
+      total += repairPrice;
+      extraHTML += `<div class="summary-row"><span>Ремонт/донаращивание (${repairCount} шт.)</span><span>+${repairPrice} ₸</span></div>`;
     }
 
     document.getElementById('extra-details').innerHTML = extraHTML;
@@ -264,7 +325,7 @@
     if (repairCount > 0) text += `\n• Донаращивание/ремонт: ${repairCount} ногт.`;
     text += `\n\nПредварительная стоимость: ${total} ₸`;
 
-    document.getElementById('wa-link').href = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
+    document.getElementById('wa-link').href = `https://wa.me/77713613240?text=${encodeURIComponent(text)}`;
   }
 
   calculate();
