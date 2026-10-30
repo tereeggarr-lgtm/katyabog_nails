@@ -181,4 +181,162 @@
       </div>
       <div>
         <button class="btn-option" onclick="selectService('shape_change', 7000, 'Переход из миндаля/овала в квадрат')">Переход из миндаля/овала в квадрат — 7 000 ₸</button>
-        <div class="service-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ре
+        <div class="service-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей • <strong>Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</strong></div>
+      </div>
+      <div>
+        <button class="btn-option" onclick="selectService('ext', 6500, 'Наращивание ногтей')">Наращивание ногтей (от 6 500 ₸)</button>
+        <div class="service-desc">(Френч / дизайн / втирка / несложный рисунок уже входят в стоимость)</div>
+      </div>
+      <div>
+        <button class="btn-option" onclick="selectService('removal_only', 1500, 'Только снятие покрытия')">Только снятие — 1 500 ₸</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="length-section" style="display: none;">
+    <h2>Длина наращивания</h2>
+    <div class="grid" id="length-options">
+      <button class="btn-option active" onclick="selectLength('Длина 0', 6500)">Длина 0 — 6 500 ₸</button>
+      <button class="btn-option" onclick="selectLength('Длина 1–2', 7500)">Длина 1–2 — 7 500 ₸</button>
+      <button class="btn-option" onclick="selectLength('Длина 3–4', 8000)">Длина 3–4 — 8 000 ₸</button>
+      <button class="btn-option" onclick="selectLength('Экстра-длина 5', 9000)">Экстра-длина 5 — 9 000 ₸</button>
+      <button class="btn-option" onclick="selectLength('Экстра-длина 6', 9500)">Экстра-длина 6 — 9 500 ₸</button>
+      <button class="btn-option" onclick="selectLength('Экстра-длина 7', 10000)">Экстра-длина 7 — 10 000 ₸</button>
+    </div>
+  </div>
+
+  <div class="section" id="design-section">
+    <h2>Дополнительный дизайн</h2>
+    <div class="grid">
+      <button class="btn-option" id="btn-3d" onclick="toggle3D()">3D-фигурки / лепка (+500 ₸)</button>
+    </div>
+    <div class="subtext">Объёмный дизайн или лепка на 2 ногтя.</div>
+  </div>
+
+  <div class="section">
+    <h2>Донаращивание / Ремонт</h2>
+    <div class="counter-box">
+      <button class="counter-btn" onclick="updateRepair(-1)">−</button>
+      <span id="repair-count" style="font-weight: bold;">0</span>
+      <button class="counter-btn" onclick="updateRepair(1)">+</button>
+    </div>
+    <div class="subtext">1–2 ногтя входят в стоимость комплекса (при укреплении/дизайне). Начиная с 3-го ногтя — +500 ₸ за 1 ноготь.</div>
+  </div>
+
+  <div class="summary-card">
+    <h2>Ваш визит</h2>
+    <div class="summary-row">
+      <span id="service-name-text">Маникюр / гигиена</span>
+      <span id="service-price-text">4 000 ₸</span>
+    </div>
+    <div id="extra-details"></div>
+    <hr style="border: 0; border-top: 1px solid #4a2b2e; margin: 12px 0;">
+    <div class="summary-row">
+      <span style="font-weight: 500;">Итого</span>
+      <span class="total-price" id="total-price-text">4 000 ₸</span>
+    </div>
+
+    <a href="#" id="wa-link" target="_blank" class="btn-whatsapp">Записаться через WhatsApp</a>
+    <a href="https://dikidi.ru/2024308" target="_blank" class="btn-dikidi">Онлайн-запись (Dikidi)</a>
+    
+    <div class="subtext" style="text-align: center; margin-top: 10px;">
+      Расчёт предварительный. Детали мастера уточняют при записи.
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const PHONE_NUMBER = "77713613240";
+
+  let currentService = 'manicure_basic';
+  let basePrice = 4000;
+  let serviceName = 'Маникюр / гигиена';
+  let lengthName = '';
+  let has3D = false;
+  let repairCount = 0;
+
+  function selectService(type, price, name) {
+    currentService = type;
+    basePrice = price;
+    serviceName = name;
+
+    document.querySelectorAll('#services .btn-option').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    const lengthSection = document.getElementById('length-section');
+    if (type === 'ext') {
+      lengthSection.style.display = 'block';
+      selectLength('Длина 0', 6500);
+    } else {
+      lengthSection.style.display = 'none';
+      lengthName = '';
+    }
+
+    calculate();
+  }
+
+  function selectLength(name, price) {
+    lengthName = name;
+    basePrice = price;
+    document.querySelectorAll('#length-options .btn-option').forEach(btn => btn.classList.remove('active'));
+    if(event) event.target.classList.add('active');
+    calculate();
+  }
+
+  function toggle3D() {
+    has3D = !has3D;
+    document.getElementById('btn-3d').classList.toggle('active', has3D);
+    calculate();
+  }
+
+  function updateRepair(delta) {
+    repairCount = Math.max(0, repairCount + delta);
+    document.getElementById('repair-count').innerText = repairCount;
+    calculate();
+  }
+
+  function calculate() {
+    let total = basePrice;
+    let extraHTML = '';
+
+    if (has3D) {
+      total += 500;
+      extraHTML += `<div class="summary-row"><span>3D-фигурки / лепка</span><span>+500 ₸</span></div>`;
+    }
+
+    if (currentService !== 'manicure_basic' && currentService !== 'removal_only') {
+      if (repairCount > 2) {
+        let extraRepairs = repairCount - 2;
+        let repairPrice = extraRepairs * 500;
+        total += repairPrice;
+        extraHTML += `<div class="summary-row"><span>Донаращивание (${repairCount} шт.)</span><span>+${repairPrice} ₸</span></div>`;
+      } else if (repairCount > 0) {
+        extraHTML += `<div class="summary-row"><span>Донаращивание (${repairCount} шт.)</span><span>Бесплатно</span></div>`;
+      }
+    } else if (repairCount > 0) {
+      let repairPrice = repairCount * 500;
+      total += repairPrice;
+      extraHTML += `<div class="summary-row"><span>Ремонт/донаращивание (${repairCount} шт.)</span><span>+${repairPrice} ₸</span></div>`;
+    }
+
+    document.getElementById('extra-details').innerHTML = extraHTML;
+
+    let displayName = serviceName + (lengthName ? ` (${lengthName})` : '');
+    document.getElementById('service-name-text').innerText = displayName;
+    document.getElementById('service-price-text').innerText = basePrice + ' ₸';
+    document.getElementById('total-price-text').innerText = total + ' ₸';
+
+    let text = `Здравствуйте! Хочу записаться на услугу:\n• ${displayName}`;
+    if (has3D) text += `\n• 3D-фигурки / лепка (+500 ₸)`;
+    if (repairCount > 0) text += `\n• Донаращивание/ремонт: ${repairCount} ногт.`;
+    text += `\n\nПредварительная стоимость: ${total} ₸`;
+
+    document.getElementById('wa-link').href = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
+  }
+
+  calculate();
+</script>
+
+</body>
+</html>
