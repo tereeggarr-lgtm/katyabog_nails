@@ -166,15 +166,19 @@
     <div class="grid" id="services">
       <div>
         <button class="btn-option active" onclick="selectService('manicure_basic', 4000, 'Маникюр / гигиена')">Маникюр / гигиена — 4 000 ₸</button>
-        <div class="service-desc">• Комби-маникюр • Опил • Снятие любого покрытия • Уход маслом • Лечебный лак</div>
+        <div class="service-desc">• Аппаратный / комби-маникюр • Опил • Снятие любого покрытия • Уход маслом • Лечебный лак</div>
       </div>
       <div>
         <button class="btn-option" onclick="selectService('manicure_nude', 5500, 'Маникюр / укрепление / нюд / молочка')">Маникюр / укрепление / нюд / молочка — 5 500 ₸</button>
-        <div class="service-desc">• Покрытие мое • Комби-маникюр • Укрепление гелем/акригелем • Поднятие клюющих ногтей • Достроить параллели/точка вроста • Ремонт 1-2 ногтей • Исправление архитектуры</div>
+        <div class="service-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Ремонт 1-2 ногтей • Исправление архитектуры</div>
       </div>
       <div>
         <button class="btn-option" onclick="selectService('manicure_design', 6000, 'Маникюр / дизайн / однотонное')">Маникюр / дизайн / однотонное — 6 000 ₸</button>
-        <div class="service-desc">• Покрытие мое • Комби-маникюр • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели • Ремонт 1-2 ногтей • Исправление архитектуры • ДИЗАЙН: френч, стемпинг, втирка, стразы, наклейки</div>
+        <div class="service-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей • ДИЗАЙН: френч, стемпинг, втирка, стразы, наклейки</div>
+      </div>
+      <div>
+        <button class="btn-option" onclick="selectService('shape_change', 7000, 'Переход из миндаля/овала в квадрат')">Переход из миндаля/овала в квадрат — 7 000 ₸</button>
+        <div class="service-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление и архитектура • Поднятие клюющих ногтей • Френч, дизайн, втирка, рисунки уже входят в стоимость!</div>
       </div>
       <div>
         <button class="btn-option" onclick="selectService('ext', 6500, 'Наращивание ногтей')">Наращивание ногтей (от 6 500 ₸)</button>
@@ -189,9 +193,9 @@
   <div class="section" id="length-section" style="display: none;">
     <h2>Длина наращивания</h2>
     <div class="grid" id="length-options">
-      <button class="btn-option active" onclick="selectLength('Длина 0', 6500)">Наращивание (Длина 0) — 6 500 ₸</button>
-      <button class="btn-option" onclick="selectLength('Длина 1–2', 7500)">Наращивание (Длина 1–2) — 7 500 ₸</button>
-      <button class="btn-option" onclick="selectLength('Длина 3–4', 8000)">Наращивание (Длина 3–4) — 8 000 ₸</button>
+      <button class="btn-option active" onclick="selectLength('Длина 0', 6500)">Длина 0 — 6 500 ₸</button>
+      <button class="btn-option" onclick="selectLength('Длина 1–2', 7500)">Длина 1–2 — 7 500 ₸</button>
+      <button class="btn-option" onclick="selectLength('Длина 3–4', 8000)">Длина 3–4 — 8 000 ₸</button>
       <button class="btn-option" onclick="selectLength('Экстра-длина 5', 9000)">Экстра-длина 5 — 9 000 ₸</button>
       <button class="btn-option" onclick="selectLength('Экстра-длина 6', 9500)">Экстра-длина 6 — 9 500 ₸</button>
       <button class="btn-option" onclick="selectLength('Экстра-длина 7', 10000)">Экстра-длина 7 — 10 000 ₸</button>
@@ -240,7 +244,7 @@
 </div>
 
 <script>
-  const PHONE_NUMBER = "787713613240".replace(/^78/, '7'); // Указан ваш номер 87713613240
+  const PHONE_NUMBER = "87713613240".replace(/^8/, '7');
 
   let currentService = 'manicure_basic';
   let basePrice = 4000;
@@ -325,7 +329,7 @@
     if (repairCount > 0) text += `\n• Донаращивание/ремонт: ${repairCount} ногт.`;
     text += `\n\nПредварительная стоимость: ${total} ₸`;
 
-    document.getElementById('wa-link').href = `https://wa.me/77713613240?text=${encodeURIComponent(text)}`;
+    document.getElementById('wa-link').href = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
   }
 
   calculate();
