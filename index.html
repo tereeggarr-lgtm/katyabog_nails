@@ -3,427 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Маникюр • Петропавловск | @katyabog_nails</title>
+    <title>Маникюр • Петропавловск</title>
     <style>
+        :root {
+            --bg-color: #1a1415;
+            --card-bg: #261e20;
+            --card-border: #3c2f32;
+            --accent-red: #8b263e;
+            --accent-red-hover: #a12d49;
+            --accent-green: #22c55e;
+            --accent-green-hover: #16a34a;
+            --text-main: #f5f2f2;
+            --text-muted: #b8aba8;
+            --text-dim: #8c7e7b;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #1a1414;
-            color: #f3e9e9;
-            padding: 16px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px 16px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
         }
 
         .container {
             width: 100%;
             max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        header {
+        /* Шапка */
+        .header {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 10px;
         }
 
-        header h1 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: #ffffff;
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
         }
 
-        header p {
+        .header p {
             font-size: 14px;
-            color: #d1c2c2;
+            color: var(--text-muted);
             margin-bottom: 6px;
         }
 
-        header a {
-            font-size: 15px;
-            color: #f3e9e9;
+        .header a {
+            font-size: 14px;
+            color: var(--text-muted);
             text-decoration: underline;
+        }
+
+        /* Секции / Карточки */
+        .section-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        /* Элементы выбора (кнопки услуг) */
+        .option-item {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-item:hover {
+            border-color: var(--text-dim);
+        }
+
+        /* Выделение выбранного элемента */
+        .option-item.selected {
+            border-color: var(--accent-red);
+            background-color: rgba(139, 38, 62, 0.15);
+        }
+
+        .option-item-content {
+            width: 100%;
+        }
+
+        .option-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
             font-weight: 500;
         }
 
-        h2.section-title {
-            font-size: 18px;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        /* Карточки услуг */
-        .card {
-            background-color: #261d1d;
-            border: 1px solid #3d2e2e;
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: border-color 0.2s, background-color 0.2s;
-        }
-
-        .card:hover {
-            border-color: #8c5858;
-        }
-
-        /* Главная крупная бордовая кнопка Наращивание сверху */
-        .card.main-highlight {
-            background-color: #6b2d38;
-            border: 1px solid #8c3b49;
-        }
-
-        .card-header {
-            font-size: 14.5px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
-        .card-desc {
+        .option-desc {
             font-size: 13px;
-            color: #b5a4a4;
+            color: var(--text-muted);
+            margin-top: 8px;
             line-height: 1.4;
-            margin-top: 6px;
         }
 
-        .card-desc strong {
-            color: #f3e9e9;
-            font-weight: 600;
+        /* Особый стиль для главной кнопки категории (например, Наращивание ногтей) */
+        .category-header-btn {
+            background-color: var(--accent-red);
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s;
         }
-
-        /* Активная карточка при выборе */
-        .card.active {
-            border-color: #8c3b49;
-            background-color: #6b2d38;
+        .category-header-btn.selected {
+            background-color: var(--accent-red-hover);
+            box-shadow: 0 0 0 2px #fff;
         }
-
-        .sub-section {
-            margin-top: 20px;
-            margin-bottom: 12px;
+        .category-header-btn .option-row {
             font-size: 16px;
             font-weight: 600;
         }
 
-        /* Блок счетчика */
+        /* Счётчик (Донаращивание / Ремонт) */
         .counter-box {
-            background-color: #261d1d;
-            border: 1px solid #3d2e2e;
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 10px 16px;
         }
 
         .counter-controls {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin: 12px 0 8px 0;
+            background: var(--bg-color);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 6px 14px;
         }
 
         .counter-btn {
-            background-color: #3d2e2e;
-            color: #fff;
+            background: none;
             border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            color: var(--text-main);
             font-size: 18px;
             cursor: pointer;
-            font-weight: bold;
-        }
-
-        .counter-btn:active {
-            background-color: #594242;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .counter-value {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        /* Итог (Ваш визит) */
-        .summary-box {
-            background-color: #261d1d;
-            border: 1px solid #4a3636;
-            border-radius: 14px;
-            padding: 16px;
-            margin-top: 24px;
-            margin-bottom: 20px;
-        }
-
-        .summary-box h3 {
             font-size: 16px;
-            margin-bottom: 12px;
             font-weight: 600;
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 8px;
-            color: #d1c2c2;
-            gap: 10px;
-        }
-
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 12px;
-            padding-top: 10px;
-            border-top: 1px solid #3d2e2e;
-            color: #ffffff;
-        }
-
-        .summary-note {
+            min-width: 20px;
             text-align: center;
-            font-size: 12px;
-            color: #b5a4a4;
-            margin-top: 16px;
-            line-height: 1.4;
+        }
+
+        /* Блок «Ваш визит» и Итого */
+        .visit-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .visit-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .total-price {
+            font-size: 24px;
+            font-weight: 700;
         }
 
         /* Кнопки записи */
         .btn-whatsapp {
-            display: block;
-            width: 100%;
-            background-color: #25d366;
-            color: #111;
-            text-align: center;
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 16px;
-            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--accent-green);
+            color: white;
             text-decoration: none;
-            margin-bottom: 12px;
-            transition: opacity 0.2s;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s;
+            text-align: center;
         }
 
-        .btn-whatsapp:active {
-            opacity: 0.8;
+        .btn-whatsapp:hover {
+            background-color: var(--accent-green-hover);
         }
 
         .btn-dikidi {
-            display: block;
-            width: 100%;
-            background-color: #6b2d2d;
-            color: #ffffff;
-            text-align: center;
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 16px;
-            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--accent-red);
+            color: white;
             text-decoration: none;
-            transition: background-color 0.2s;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s;
+            text-align: center;
         }
 
-        .btn-dikidi:active {
-            background-color: #823838;
+        .btn-dikidi:hover {
+            background-color: var(--accent-red-hover);
+        }
+
+        .footer-note {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-align: center;
+            line-height: 1.4;
+            margin-top: 4px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Маникюр • Петропавловск</h1>
-            <p>Качественное покрытие и эстетика</p>
-            <a href="https://instagram.com/katyabog_nails" target="_blank">Instagram: @katyabog_nails</a>
-        </header>
+<div class="container">
+    <!-- Шапка сайта -->
+    <div class="header">
+        <h1>Маникюр • Петропавловск</h1>
+        <p>Качественное покрытие и эстетика</p>
+        <a href="https://instagram.com/katyabog_nail" target="_blank">Instagram: @katyabog_nail</a>
+    </div>
 
-        <h2 class="section-title">Выберите услугу</h2>
-
-        <!-- Крупная бордовая кнопка Наращивание (самая первая сверху) -->
-        <div class="card main-highlight active" onclick="selectService('Наращивание ногтей (Длина 0)', 6500, this)">
-            <div class="card-header">Наращивание ногтей (от 6 500 ₸)</div>
-            <div class="card-desc">(Френч / дизайн / втирка / несложный рисунок уже входят в стоимость)</div>
-        </div>
-
-        <!-- Только снятие -->
-        <div class="card" onclick="selectService('Только снятие', 1500, this)">
-            <div class="card-header">Только снятие — 1 500 ₸</div>
-        </div>
+    <!-- Блок 1: Выберите услугу -->
+    <div class="section-card">
+        <div class="section-title">Выберите услугу</div>
 
         <!-- Услуга 1 -->
-        <div class="card" onclick="selectService('Маникюр / гигиена', 4000, this)">
-            <div class="card-header">Маникюр / гигиена — 4 000 ₸</div>
-            <div class="card-desc">• Аппаратный / комби-маникюр • Опил • Снятие любого покрытия • Уход маслом • Лечебный лак</div>
+        <div class="option-item" onclick="selectService('Маникюр / гигиена', 4000, this)">
+            <div class="option-item-content">
+                <div class="option-row">
+                    <span>Маникюр / гигиена</span>
+                    <span>4 000 ₸</span>
+                </div>
+                <div class="option-desc">• Аппаратный / комби-маникюр • Опил • Снятие любого покрытия • Уход маслом • Лечебный лак</div>
+            </div>
         </div>
 
         <!-- Услуга 2 -->
-        <div class="card" onclick="selectService('Маникюр / укрепление / нюд / молочка', 5500, this)">
-            <div class="card-header">Маникюр / укрепление / нюд / молочка — 5 500 ₸</div>
-            <div class="card-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей</div>
+        <div class="option-item" onclick="selectService('Маникюр / укрепление / нюд / молочка', 5500, this)">
+            <div class="option-item-content">
+                <div class="option-row">
+                    <span>Маникюр / укрепление / нюд / молочка</span>
+                    <span>5 500 ₸</span>
+                </div>
+                <div class="option-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей</div>
+            </div>
         </div>
 
         <!-- Услуга 3 -->
-        <div class="card" onclick="selectService('Маникюр / дизайн / укрепление / однотонное', 6000, this)">
-            <div class="card-header">Маникюр / дизайн / укрепление / однотонное — 6 000 ₸</div>
-            <div class="card-desc">
-                • Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей<br>
-                <strong>Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</strong>
+        <div class="option-item" onclick="selectService('Маникюр / дизайн / укрепление / однотонное', 6000, this)">
+            <div class="option-item-content">
+                <div class="option-row">
+                    <span>Маникюр / дизайн / укрепление / однотонное</span>
+                    <span>6 000 ₸</span>
+                </div>
+                <div class="option-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей • Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</div>
             </div>
         </div>
 
         <!-- Услуга 4 -->
-        <div class="card" onclick="selectService('Переход из миндаля/овала в квадрат', 7000, this)">
-            <div class="card-header">Переход из миндаля/овала в квадрат — 7 000 ₸</div>
-            <div class="card-desc">
-                • Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей<br>
-                <strong>Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</strong>
+        <div class="option-item" onclick="selectService('Переход из миндаля/овала в квадрат', 7000, this)">
+            <div class="option-item-content">
+                <div class="option-row">
+                    <span>Переход из миндаля/овала в квадрат</span>
+                    <span>7 000 ₸</span>
+                </div>
+                <div class="option-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей • Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</div>
             </div>
-        </div>
-
-        <!-- Длина наращивания -->
-        <div class="sub-section">Длина наращивания</div>
-        <div class="card" onclick="selectService('Наращивание (Длина 0)', 6500, this)">
-            <div class="card-header">Длина 0 — 6 500 ₸</div>
-        </div>
-        <div class="card" onclick="selectService('Наращивание (Длина 1–2)', 7500, this)">
-            <div class="card-header">Длина 1–2 — 7 500 ₸</div>
-        </div>
-        <div class="card" onclick="selectService('Наращивание (Длина 3–4)', 8500, this)">
-            <div class="card-header">Длина 3–4 — 8 500 ₸</div>
-        </div>
-        <div class="card" onclick="selectService('Экстра-длина 5', 9000, this)">
-            <div class="card-header">Экстра-длина 5 — 9 000 ₸</div>
-        </div>
-        <div class="card" onclick="selectService('Экстра-длина 6', 9500, this)">
-            <div class="card-header">Экстра-длина 6 — 9 500 ₸</div>
-        </div>
-        <div class="card" onclick="selectService('Экстра-длина 7', 10000, this)">
-            <div class="card-header">Экстра-длина 7 — 10 000 ₸</div>
-        </div>
-
-        <!-- Дополнительный дизайн -->
-        <div class="sub-section">Дополнительный дизайн</div>
-        <div class="card" onclick="toggleExtraDesign('3D-фигурки / лепка', 500, this)">
-            <div class="card-header">3D-фигурки / лепка (+500 ₸)</div>
-            <div class="card-desc">Объёмный дизайн или лепка на 2 ногтя.</div>
-        </div>
-
-        <!-- Донаращивание / Ремонт -->
-        <div class="counter-box">
-            <div class="card-header" style="margin-bottom: 0;">Донаращивание / Ремонт</div>
-            <div class="counter-controls">
-                <button class="counter-btn" onclick="updateRepair(-1)">−</button>
-                <span class="counter-value" id="repairCount">0</span>
-                <button class="counter-btn" onclick="updateRepair(1)">+</button>
-            </div>
-            <div class="card-desc">
-                1–2 ногтя входят в стоимость комплекса (при укреплении/дизайне). Начиная с 3-го ногтя — +500 ₸ за 1 ноготь.
-            </div>
-        </div>
-
-        <!-- Блок "Ваш визит" -->
-        <div class="summary-box">
-            <h3>Ваш визит</h3>
-            <div class="summary-item">
-                <span id="selectedServiceName">Наращивание ногтей (Длина 0)</span>
-                <span id="selectedServicePrice">6500 ₸</span>
-            </div>
-            <div class="summary-item" id="repairSummaryRow" style="display: none;">
-                <span id="repairText">Донаращивание (0 шт.)</span>
-                <span id="repairPrice">0 ₸</span>
-            </div>
-            <div class="summary-item" id="extraSummaryRow" style="display: none;">
-                <span id="extraText">3D-фигурки / лепка</span>
-                <span id="extraPrice">+500 ₸</span>
-            </div>
-            <div class="summary-total">
-                <span>Итого</span>
-                <span id="totalPrice">6500 ₸</span>
-            </div>
-        </div>
-
-        <!-- Кнопки записи -->
-        <a href="https://wa.me/" class="btn-whatsapp" target="_blank">Записаться через WhatsApp</a>
-        <a href="https://dikidi.net/" class="btn-dikidi" target="_blank">Онлайн-запись (Dikidi)</a>
-        
-        <div class="summary-note">
-            Расчёт предварительный. Детали мастера уточняют при записи.
         </div>
     </div>
 
-    <script>
-        let currentService = {
-            name: "Наращивание ногтей (Длина 0)",
-            price: 6500
-        };
-        let repairCount = 0;
-        let extraDesignActive = false;
-        let extraDesignPrice = 500;
+    <!-- Блок 2: Наращивание ногтей -->
+    <div class="section-card">
+        <button class="category-header-btn" onclick="selectService('Наращивание ногтей (Длина 0)', 6500, this)">
+            <div class="option-row">
+                <span>Наращивание ногтей (от 6 500 ₸)</span>
+            </div>
+            <div class="option-desc" style="color: rgba(255,255,255,0.8);">(Френч / дизайн / втирка / несложный рисунок уже входят в стоимость)</div>
+        </button>
 
-        function selectService(name, price, element) {
-            document.querySelectorAll('.card').forEach(c => {
-                c.classList.remove('active', 'main-highlight');
-            });
-            element.classList.add('active');
+        <div class="option-item" onclick="selectService('Только снятие', 1500, this)">
+            <div class="option-item-content">
+                <div class="option-row">
+                    <span>Только снятие</span>
+                    <span>1 500 ₸</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            currentService = { name, price };
-            updateSummary();
-        }
+    <!-- Блок 3: Длина наращивания -->
+    <div class="section-card">
+        <div class="section-title">Длина наращивания</div>
 
-        function toggleExtraDesign(name, price, element) {
-            extraDesignActive = !extraDesignActive;
-            if (extraDesignActive) {
-                element.classList.add('active');
-            } else {
-                element.classList.remove('active');
-            }
-            updateSummary();
-        }
+        <div class="option-item" onclick="selectService('Наращивание ногтей (Длина 0)', 6500, this)">
+            <div class="option-row"><span>Длина 0</span><span>6 500 ₸</span></div>
+        </div>
+        <div class="option-item" onclick="selectService('Наращивание ногтей (Длина 1–2)', 7500, this)">
+            <div class="option-row"><span>Длина 1–2</span><span>7 500 ₸</span></div>
+        </div>
+        <div class="option-item" onclick="selectService('Наращивание ногтей (Длина 3–4)', 8500, this)">
+            <div class="option-row"><span>Длина 3–4</span><span>8 500 ₸</span></div>
+        </div>
+        <div class="option-item" onclick="selectService('Наращивание ногтей (Экстра-длина 5)', 9000, this)">
+            <div class="option-row"><span>Экстра-длина 5</span><span>9 000 ₸</span></div>
+        </div>
+        <div class="option-item" onclick="selectService('Наращивание ногтей (Экстра-длина 6)', 9500, this)">
+            <div class="option-row"><span>Экстра-длина 6</span><span>9 500 ₸</span></div>
+        </div>
+        <div class="option-item" onclick="selectService('Наращивание ногтей (Экстра-длина 7)', 10000, this)">
+            <div class="option-row"><span>Экстра-длина 7</span><span>10 000 ₸</span></div>
+        </div>
+    </div>
 
-        function updateRepair(change) {
-            repairCount += change;
-            if (repairCount < 0) repairCount = 0;
+    <!-- Блок 4: Дополнительный дизайн -->
+    <div class="section-card">
+        <div class="section-title">Дополнительный дизайн</div>
+        <div class="option-item" onclick="toggleAddon('3D-фигурки / лепка', 5000, this)">
+            <div class="option-item-content">
+                <div class="option-row">
+                    <span>3D-фигурки / лепка (+500 ₸)</span>
+                </div>
+                <div class="option-desc">Объёмный дизайн или лепка на 2 ногтя.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок 5: Донаращивание / Ремонт -->
+    <div class="section-card">
+        <div class="section-title">Донаращивание / Ремонт</div>
+        <div class="counter-box">
+            <div class="counter-controls">
+                <button class="counter-btn" onclick="changeRepair(-1)">−</button>
+                <span class="counter-value" id="repairCount">0</span>
+                <button class="counter-btn" onclick="changeRepair(1)">+</button>
+            </div>
+        </div>
+        <div class="option-desc" style="margin-top: 0;">1–2 ногтя входят в стоимость комплекса (при укреплении/дизайне). Начиная с 3-го ногтя — +500 ₸ за 1 ноготь.</div>
+    </div>
+
+    <!-- Блок 6: Ваш визит и Итого -->
+    <div class="section-card">
+        <div class="section-title">Ваш визит</div>
+        
+        <div class="visit-summary">
+            <div class="visit-row">
+                <span id="selectedServiceName">Наращивание ногтей (Длина 0)</span>
+                <span id="selectedServicePrice">6500 ₸</span>
+            </div>
             
-            document.getElementById('repairCount').innerText = repairCount;
-            updateSummary();
+            <div class="total-row">
+                <span>Итого</span>
+                <span class="total-price" id="totalPrice">6500 ₸</span>
+            </div>
+
+            <a href="#" class="btn-whatsapp" id="whatsappBtn" target="_blank">Записаться через WhatsApp</a>
+            <a href="https://dikidi.net" class="btn-dikidi" target="_blank">Онлайн-запись (Dikidi)</a>
+            
+            <div class="footer-note">Расчёт предварительный. Детали мастера уточняют при записи.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentService = {
+        name: "Наращивание ногтей (Длина 0)",
+        price: 6500
+    };
+    
+    let repairCountVal = 0;
+    let addonActive = false;
+    let addonPrice = 500;
+
+    // Инициализация при загрузке (выделяем первую услугу по умолчанию)
+    window.addEventListener('DOMContentLoaded', () => {
+        const firstCategoryBtn = document.querySelector('.category-header-btn');
+        if(firstCategoryBtn) firstCategoryBtn.classList.add('selected');
+        updateDisplay();
+    });
+
+    function selectService(name, price, element) {
+        currentService.name = name;
+        currentService.price = price;
+
+        // Снимаем выделение со всех элементов выбора услуг и категорий
+        document.querySelectorAll('.option-item, .category-header-btn').forEach(el => {
+            el.classList.remove('selected');
+        });
+
+        // Выделяем текущий
+        element.classList.add('selected');
+        updateDisplay();
+    }
+
+    function toggleAddon(name, price, element) {
+        addonActive = !addonActive;
+        if (addonActive) {
+            element.classList.add('selected');
+        } else {
+            element.classList.remove('selected');
+        }
+        updateDisplay();
+    }
+
+    function changeRepair(delta) {
+        repairCountVal += delta;
+        if (repairCountVal < 0) repairCountVal = 0;
+        document.getElementById('repairCount').innerText = repairCountVal;
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        document.getElementById('selectedServiceName').innerText = currentService.name;
+        
+        // Расчет донаращивания (начиная с 3-го ногтя +500₸ за каждый)
+        let repairCost = 0;
+        if (repairCountVal >= 3) {
+            repairCost = (repairCountVal - 2) * 500;
         }
 
-        function updateSummary() {
-            document.getElementById('selectedServiceName').innerText = currentService.name;
-            document.getElementById('selectedServicePrice').innerText = currentService.price + ' ₸';
+        let total = currentService.price + repairCost;
+        if (addonActive) total += addonPrice;
 
-            let repairCost = 0;
-            const repairRow = document.getElementById('repairSummaryRow');
-            if (repairCount > 2) {
-                let extraNails = repairCount - 2;
-                repairCost = extraNails * 500;
-                repairRow.style.display = 'flex';
-                document.getElementById('repairText').innerText = `Донаращивание (${repairCount} шт.)`;
-                document.getElementById('repairPrice').innerText = `+${repairCost} ₸`;
-            } else if (repairCount > 0) {
-                repairRow.style.display = 'flex';
-                document.getElementById('repairText').innerText = `Донаращивание (${repairCount} шт. вх. в стоим.)`;
-                document.getElementById('repairPrice').innerText = `0 ₸`;
-            } else {
-                repairRow.style.display = 'none';
-            }
+        document.getElementById('selectedServicePrice5' || 'selectedServicePrice').innerText = currentService.price + " ₸";
+        document.getElementById('totalPrice').innerText = total + " ₸";
 
-            const extraRow = document.getElementById('extraSummaryRow');
-            let extraCost = 0;
-            if (extraDesignActive) {
-                extraRow.style.display = 'flex';
-                extraCost = extraDesignPrice;
-            } else {
-                extraRow.style.display = 'none';
-            }
-
-            let total = currentService.price + repairCost + extraCost;
-            document.getElementById('totalPrice').innerText = total + ' ₸';
+        // Формирование ссылки WhatsApp с текстом заказа
+        let message = `Здравствуйте! Хочу записаться на услугу: ${currentService.name} (${currentService.price} ₸).`;
+        if (repairCountVal > 0) {
+            message += ` Донаращивание/ремонт: ${repairCountVal} шт.`;
         }
+        if (addonActive) {
+            message += ` Доп. дизайн: 3D-фигурки / лепка.`;
+        }
+        message += ` Итоговая сумма: ${total} ₸`;
 
-        updateSummary();
-    </script>
+        const encodedMessage = encodeURIComponent(message);
+        // Замените номер ниже на свой актуальный номер WhatsApp в формате 770XXXXXXXXX
+        document.getElementById('whatsappBtn').href = `https://wa.me/77000000000?text=${encodedMessage}`;
+    }
+</script>
+
 </body>
 </html>
