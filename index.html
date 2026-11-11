@@ -58,7 +58,7 @@
             color: #f3e9e9;
         }
 
-        /* Карточка услуги (общий блок) */
+        /* Карточка услуги (всегда темная) */
         .service-card {
             background-color: #211919;
             border: 1px solid #332626;
@@ -66,14 +66,14 @@
             padding: 14px;
             margin-bottom: 12px;
             cursor: pointer;
-            transition: background-color 0.2s, border-color 0.2s;
+            transition: border-color 0.2s;
         }
 
         .service-card:hover {
             border-color: #6b4444;
         }
 
-        /* Верхняя рамка с названием и ценой внутри карточки */
+        /* Верхняя плашка с названием и ценой */
         .service-title-box {
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 8px;
@@ -84,9 +84,10 @@
             justify-content: space-between;
             align-items: center;
             background-color: rgba(0, 0, 0, 0.15);
+            transition: background-color 0.2s, border-color 0.2s;
         }
 
-        /* Описание (что входит) внутри карточки */
+        /* Описание (что входит) */
         .service-desc {
             font-size: 12px;
             color: #b5a4a4;
@@ -99,24 +100,10 @@
             font-weight: 600;
         }
 
-        /* Активная (выбранная) карточка — заливается бордовым цветом */
-        .service-card.active {
+        /* При клике бордовым цветится ТОЛЬКО плашка с названием и ценой */
+        .service-card.active .service-title-box {
             background-color: #59252c;
             border-color: #7a353e;
-        }
-
-        /* Отдельная большая бордовая кнопка Наращивание сверху */
-        .highlighted-box {
-            background-color: #59252c;
-            border: 1px solid #7a353e;
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 12px;
-            cursor: pointer;
-        }
-
-        .highlighted-box .service-title-box {
-            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .sub-section {
@@ -258,7 +245,7 @@
 
         <h2 class="section-title">Выберите услугу</h2>
 
-        <!-- Услуга 1: Гигиена -->
+        <!-- Услуга 1 -->
         <div class="service-card" onclick="selectService('Маникюр / гигиена', 4000, this)">
             <div class="service-title-box">
                 <span>Маникюр / гигиена</span>
@@ -267,7 +254,7 @@
             <div class="service-desc">• Аппаратный / комби-маникюр • Опил • Снятие любого покрытия • Уход маслом • Лечебный лак</div>
         </div>
 
-        <!-- Услуга 2: Укрепление -->
+        <!-- Услуга 2 -->
         <div class="service-card" onclick="selectService('Маникюр / укрепление / нюд / молочка', 5500, this)">
             <div class="service-title-box">
                 <span>Маникюр / укрепление / нюд / молочка</span>
@@ -276,7 +263,7 @@
             <div class="service-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей</div>
         </div>
 
-        <!-- Услуга 3: Дизайн (Активная по умолчанию) -->
+        <!-- Услуга 3 (Активная по умолчанию) -->
         <div class="service-card active" onclick="selectService('Маникюр / дизайн / укрепление / однотонное', 6000, this)">
             <div class="service-title-box">
                 <span>Маникюр / дизайн / укрепление / однотонное</span>
@@ -288,7 +275,7 @@
             </div>
         </div>
 
-        <!-- Услуга 4: Переход в квадрат -->
+        <!-- Услуга 4 -->
         <div class="service-card" onclick="selectService('Переход из миндаля/овала в квадрат', 7000, this)">
             <div class="service-title-box">
                 <span>Переход из миндаля/овала в квадрат</span>
@@ -300,8 +287,8 @@
             </div>
         </div>
 
-        <!-- Бордовая кнопка Наращивание сверху -->
-        <div class="highlighted-box" onclick="selectService('Наращивание ногтей (Длина 0)', 6500, this)">
+        <!-- Наращивание ногтей (обычная карточка, без постоянного бордового цвета) -->
+        <div class="service-card" onclick="selectService('Наращивание ногтей (Длина 0)', 6500, this)">
             <div class="service-title-box">
                 <span>Наращивание ногтей</span>
                 <span>от 6 500 ₸</span>
