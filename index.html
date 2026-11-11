@@ -74,7 +74,7 @@
       align-items: baseline;
       width: 100%;
       gap: 10px;
-      pointer-events: none; /* Чтобы клик всегда уходил на кнопку */
+      pointer-events: none;
     }
     .btn-option-flex span:last-child {
       white-space: nowrap;
@@ -176,10 +176,10 @@
   <div class="header-profile">
     <h1>Маникюр • Петропавловск</h1>
     <p>Качественное покрытие и эстетика</p>
-    <a href="https://instagram.com/katyabog_nail" target="_blank" class="insta-link">Instagram: @katyabog_nail</a>
+    <a href="https://instagram.com/katyabog_nails" target="_blank" class="insta-link">Instagram: @katyabog_nails</a>
   </div>
 
-  <!-- Блок 1: Основные услуги -->
+  <!-- Блок: Выберите услугу (основные без наращивания) -->
   <div class="section">
     <h2>Выберите услугу</h2>
     <div class="grid" id="services">
@@ -217,7 +217,7 @@
     </div>
   </div>
 
-  <!-- Блок 2: Наращивание и Снятие -->
+  <!-- Блок: Наращивание и Снятие (теперь внизу) -->
   <div class="section">
     <div class="grid">
       <div>
@@ -227,7 +227,7 @@
             <span>от 6 500 ₸</span>
           </div>
         </button>
-        <div class="service-desc">(Френч / дизайн / втирка / несложный рисунок уже входят в стоимость)</div>
+        <div class="service-desc" style="margin-bottom: 8px;">(Френч / дизайн / втирка / несложный рисунок уже входят в стоимость)</div>
       </div>
       <div>
         <button class="btn-option" onclick="selectService('removal_only', 1500, 'Только снятие покрытия', this)">
@@ -240,7 +240,7 @@
     </div>
   </div>
 
-  <!-- Блок 3: Длина наращивания (открывается при выборе Наращивания) -->
+  <!-- Блок: Длина наращивания (выдвигается при выборе Наращивания) -->
   <div class="section" id="length-section" style="display: none;">
     <h2>Длина наращивания</h2>
     <div class="grid" id="length-options">
@@ -265,7 +265,7 @@
     </div>
   </div>
 
-  <!-- Блок 4: Дополнительный дизайн -->
+  <!-- Блок: Дополнительный дизайн -->
   <div class="section" id="design-section">
     <h2>Дополнительный дизайн</h2>
     <div class="grid">
@@ -279,7 +279,7 @@
     <div class="subtext">Объёмный дизайн или лепка на 2 ногтя.</div>
   </div>
 
-  <!-- Блок 5: Донаращивание / Ремонт -->
+  <!-- Блок: Донаращивание / Ремонт -->
   <div class="section">
     <h2>Донаращивание / Ремонт</h2>
     <div class="counter-box">
@@ -290,7 +290,7 @@
     <div class="subtext">1–2 ногтя входят в стоимость комплекса (при укреплении/дизайне). Начиная с 3-го ногтя — +500 ₸ за 1 ноготь.</div>
   </div>
 
-  <!-- Блок 6: Итоги -->
+  <!-- Блок: Итоги -->
   <div class="summary-card">
     <h2>Ваш визит</h2>
     <div class="summary-row">
@@ -329,7 +329,6 @@
     basePrice = price;
     serviceName = name;
 
-    // Снимаем класс active со всех главных кнопок и кнопок наращивания/снятия
     document.querySelectorAll('.btn-option').forEach(btn => {
       if(btn.id !== 'btn-3d' && !btn.closest('#length-options')) {
         btn.classList.remove('active');
@@ -341,7 +340,6 @@
     const lengthSection = document.getElementById('length-section');
     if (type === 'ext') {
       lengthSection.style.display = 'block';
-      // По умолчанию активируем первую длину
       const firstLengthBtn = document.querySelector('#length-options .btn-option');
       selectLength('Длина 0', 6500, firstLengthBtn);
     } else {
