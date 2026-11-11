@@ -58,7 +58,7 @@
             color: #f3e9e9;
         }
 
-        /* Обычная карточка услуги */
+        /* Карточка услуги (по умолчанию темная) */
         .card {
             background-color: #211919;
             border: 1px solid #332626;
@@ -66,29 +66,18 @@
             padding: 14px 16px;
             margin-bottom: 12px;
             cursor: pointer;
-            transition: border-color 0.2s, background-color 0.2s;
+            transition: background-color 0.2s, border-color 0.2s;
         }
 
         .card:hover {
             border-color: #6b4444;
         }
 
-        .card-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
+        .card-header {
             font-size: 14px;
             font-weight: 600;
-        }
-
-        .card-name {
-            flex: 1;
-        }
-
-        .card-price {
-            white-space: nowrap;
-            flex-shrink: 0;
+            line-height: 1.4;
+            color: #ffffff;
         }
 
         .card-desc {
@@ -103,16 +92,10 @@
             font-weight: 600;
         }
 
-        /* Бордовая кликабельная карточка Наращивания */
-        .card.highlighted-banner {
+        /* Кликабельное бордовое состояние для КАЖДОЙ карточки при выборе */
+        .card.active {
             background-color: #59252c;
-            border: 1px solid #7a353e;
-        }
-
-        /* Состояние при выборе (активная рамка) */
-        .card.selected {
-            border-color: #a84252;
-            box-shadow: 0 0 0 1px #a84252;
+            border-color: #7a353e;
         }
 
         .sub-section {
@@ -247,124 +230,101 @@
 
     <div class="container">
         <header>
-            <h1>Маникюр • Петропавловск</h1>
-            <p>Качественное покрытие и эстетика</p>
+            <h1>Маникюр • Петропавловск[span_0](start_span)[span_0](end_span)</h1>
+            <p>Качественное покрытие и эстетика[span_1](start_span)[span_1](end_span)[span_2](start_span)[span_2](end_span)</p>
             <a href="https://instagram.com/katyabog_nails" target="_blank">Instagram: @katyabog_nails</a>
         </header>
 
-        <h2 class="section-title">Выберите услугу</h2>
+        <h2 class="section-title">Выберите услугу[span_3](start_span)[span_3](end_span)</h2>
 
         <!-- Услуга 1 -->
         <div class="card" onclick="selectService('Маникюр / гигиена', 4000, this)">
-            <div class="card-row">
-                <span class="card-name">Маникюр / гигиена</span>
-                <span class="card-price">— 4 000 ₸</span>
-            </div>
-            <div class="card-desc">• Аппаратный / комби-маникюр • Опил • Снятие любого покрытия • Уход маслом • Лечебный лак</div>
+            <div class="card-header">Маникюр / гигиена — 4 000 ₸</div>
+            <div class="card-desc">• Аппаратный / комби-маникюр • Опил • Снятие любого покрытия • Уход маслом • Лечебный лак[span_4](start_span)[span_4](end_span)</div>
         </div>
 
         <!-- Услуга 2 -->
         <div class="card" onclick="selectService('Маникюр / укрепление / нюд / молочка', 5500, this)">
-            <div class="card-row">
-                <span class="card-name">Маникюр / укрепление / нюд / молочка</span>
-                <span class="card-price">— 5 500 ₸</span>
-            </div>
-            <div class="card-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей</div>
+            <div class="card-header">Маникюр / укрепление / нюд / молочка — 5 500 ₸</div>
+            <div class="card-desc">• Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей[span_5](start_span)[span_5](end_span)</div>
         </div>
 
-        <!-- Услуга 3 -->
-        <div class="card" onclick="selectService('Маникюр / дизайн / укрепление / однотонное', 6000, this)">
-            <div class="card-row">
-                <span class="card-name">Маникюр / дизайн / укрепление / однотонное</span>
-                <span class="card-price">— 6 000 ₸</span>
-            </div>
+        <!-- Услуга 3 (Активная по умолчанию) -->
+        <div class="card active" onclick="selectService('Маникюр / дизайн / укрепление / однотонное', 6000, this)">
+            <div class="card-header">Маникюр / дизайн / укрепление / однотонное — 6 000 ₸</div>
             <div class="card-desc">
-                • Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей<br>
-                <strong>Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</strong>
+                • Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей[span_6](start_span)[span_6](end_span)<br>
+                <strong>Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</strong>[span_7](start_span)[span_7](end_span)
             </div>
         </div>
 
         <!-- Услуга 4 -->
         <div class="card" onclick="selectService('Переход из миндаля/овала в квадрат', 7000, this)">
-            <div class="card-row">
-                <span class="card-name">Переход из миндаля/овала в квадрат</span>
-                <span class="card-price">— 7 000 ₸</span>
-            </div>
+            <div class="card-header">Переход из миндаля/овала в квадрат — 7 000 ₸</div>
             <div class="card-desc">
-                • Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей<br>
-                <strong>Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</strong>
+                • Аппаратный маникюр • Снятие покрытия • Укрепление гелем/акригелем • Поднятие клюющих • Достроить параллели/точка вроста • Исправление архитектуры • Ремонт 1-2 ногтей[span_8](start_span)[span_8](end_span)<br>
+                <strong>Однотон, френч, дизайн, втирка, стемпинг, наклейки входят в стоимость</strong>[span_9](start_span)[span_9](end_span)
             </div>
         </div>
 
-        <!-- Кликабельная бордовая кнопка Наращивание (активная по умолчанию) -->
-        <div class="card highlighted-banner selected" onclick="selectService('Наращивание ногтей (Длина 0)', 6500, this)">
-            <div class="card-row">
-                <span class="card-name">Наращивание ногтей</span>
-                <span class="card-price">(от 6 500 ₸)</span>
-            </div>
-            <div class="card-desc">(Френч / дизайн / втирка / несложный рисунок уже входят в стоимость)</div>
+        <!-- Наращивание ногтей (теперь кликабельная карточка) -->
+        <div class="card" onclick="selectService('Наращивание ногтей (Длина 0)', 6500, this)">
+            <div class="card-header">Наращивание ногтей (от 6 500 ₸)[span_10](start_span)[span_10](end_span)</div>
+            <div class="card-desc">(Френч / дизайн / втирка / несложный рисунок уже входят в стоимость)[span_11](start_span)[span_11](end_span)</div>
         </div>
 
         <!-- Только снятие -->
         <div class="card" onclick="selectService('Только снятие', 1500, this)">
-            <div class="card-row">
-                <span class="card-name">Только снятие</span>
-                <span class="card-price">— 1 500 ₸</span>
-            </div>
+            <div class="card-header">Только снятие — 1 500 ₸[span_12](start_span)[span_12](end_span)</div>
         </div>
 
         <!-- Длина наращивания -->
-        <div class="sub-section">Длина наращивания</div>
+        <div class="sub-section">Длина наращивания[span_13](start_span)[span_13](end_span)</div>
         <div class="card" onclick="selectService('Наращивание (Длина 0)', 6500, this)">
-            <div class="card-row"><span class="card-name">Длина 0</span><span class="card-price">— 6 500 ₸</span></div>
+            <div class="card-header">Длина 0 — 6 500 ₸[span_14](start_span)[span_14](end_span)</div>
         </div>
         <div class="card" onclick="selectService('Наращивание (Длина 1–2)', 7500, this)">
-            <div class="card-row"><span class="card-name">Длина 1–2</span><span class="card-price">— 7 500 ₸</span></div>
+            <div class="card-header">Длина 1–2 — 7 500 ₸[span_15](start_span)[span_15](end_span)</div>
         </div>
         <div class="card" onclick="selectService('Наращивание (Длина 3–4)', 8500, this)">
-            <div class="card-row"><span class="card-name">Длина 3–4</span><span class="card-price">— 8 500 ₸</span></div>
+            <div class="card-header">Длина 3–4 — 8 500 ₸[span_16](start_span)[span_16](end_span)</div>
         </div>
         <div class="card" onclick="selectService('Экстра-длина 5', 9000, this)">
-            <div class="card-row"><span class="card-name">Экстра-длина 5</span><span class="card-price">— 9 000 ₸</span></div>
+            <div class="card-header">Экстра-длина 5 — 9 000 ₸[span_17](start_span)[span_17](end_span)</div>
         </div>
         <div class="card" onclick="selectService('Экстра-длина 6', 9500, this)">
-            <div class="card-row"><span class="card-name">Экстра-длина 6</span><span class="card-price">— 9 500 ₸</span></div>
+            <div class="card-header">Экстра-длина 6 — 9 500 ₸[span_18](start_span)[span_18](end_span)</div>
         </div>
         <div class="card" onclick="selectService('Экстра-длина 7', 10000, this)">
-            <div class="card-row"><span class="card-name">Экстра-длина 7</span><span class="card-price">— 10 000 ₸</span></div>
+            <div class="card-header">Экстра-длина 7 — 10 000 ₸[span_19](start_span)[span_19](end_span)</div>
         </div>
 
         <!-- Дополнительный дизайн -->
-        <div class="sub-section">Дополнительный дизайн</div>
+        <div class="sub-section">Дополнительный дизайн[span_20](start_span)[span_20](end_span)</div>
         <div class="card" onclick="toggleExtraDesign('3D-фигурки / лепка', 500, this)">
-            <div class="card-row">
-                <span class="card-name">3D-фигурки / лепка</span>
-                <span class="card-price">(+500 ₸)</span>
-            </div>
-            <div class="card-desc">Объёмный дизайн или лепка на 2 ногтя.</div>
+            <div class="card-header">3D-фигурки / лепка (+500 ₸)[span_21](start_span)[span_21](end_span)</div>
+            <div class="card-desc">Объёмный дизайн или лепка на 2 ногтя.[span_22](start_span)[span_22](end_span)</div>
         </div>
 
         <!-- Донаращивание / Ремонт -->
         <div class="counter-box">
-            <div class="card-row" style="margin-bottom: 0;">
-                <span class="card-name">Донаращивание / Ремонт</span>
-            </div>
+            <div class="card-header">Донаращивание / Ремонт[span_23](start_span)[span_23](end_span)</div>
             <div class="counter-controls">
                 <button class="counter-btn" onclick="updateRepair(-1)">−</button>
                 <span class="counter-value" id="repairCount">0</span>
                 <button class="counter-btn" onclick="updateRepair(1)">+</button>
             </div>
             <div class="card-desc">
-                1–2 ногтя входят в стоимость комплекса (при укреплении/дизайне). Начиная с 3-го ногтя — +500 ₸ за 1 ноготь.
+                1–2 ногтя входят в стоимость комплекса (при укреплении/дизайне). Начиная с 3-го ногтя — +500 ₸ за 1 ноготь.[span_24](start_span)[span_24](end_span)
             </div>
         </div>
 
         <!-- Блок "Ваш визит" -->
         <div class="summary-box">
-            <h3>Ваш визит</h3>
+            <h3>Ваш визит[span_25](start_span)[span_25](end_span)</h3>
             <div class="summary-item">
-                <span id="selectedServiceName">Наращивание ногтей (Длина 0)</span>
-                <span id="selectedServicePrice">6500 ₸</span>
+                <span id="selectedServiceName">Маникюр / дизайн / укрепление / однотонное</span>
+                <span id="selectedServicePrice">6000 ₸</span>
             </div>
             <div class="summary-item" id="repairSummaryRow" style="display: none;">
                 <span id="repairText">Донаращивание (0 шт.)</span>
@@ -375,11 +335,91 @@
                 <span id="extraPrice">+500 ₸</span>
             </div>
             <div class="summary-total">
-                <span>Итого</span>
-                <span id="totalPrice">6500 ₸</span>
+                <span>Итого[span_26](start_span)[span_26](end_span)</span>
+                <span id="totalPrice">6000 ₸</span>
             </div>
         </div>
 
         <!-- Кнопки записи -->
-        <a href="https://wa.me/" class="btn-whatsapp" target="_blank">Записаться через WhatsApp</a>
-        <a href="https://dikidi.net/" class="btn-dikidi" target="_blank">Онлайн-запись (Dikidi)
+        <a href="https://wa.me/" class="btn-whatsapp" target="_blank">Записаться через WhatsApp[span_27](start_span)[span_27](end_span)</a>
+        <a href="https://dikidi.net/" class="btn-dikidi" target="_blank">Онлайн-запись (Dikidi)[span_28](start_span)[span_28](end_span)</a>
+        
+        <div class="summary-note">
+            Расчёт предварительный. Детали мастера уточняют при записи.
+        </div>
+    </div>
+
+    <script>
+        let currentService = {
+            name: "Маникюр / дизайн / укрепление / однотонное",
+            price: 6000
+        };
+        let repairCount = 0;
+        let extraDesignActive = false;
+        let extraDesignPrice = 500;
+
+        function selectService(name, price, element) {
+            document.querySelectorAll('.card').forEach(c => {
+                c.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            currentService = { name, price };
+            updateSummary();
+        }
+
+        function toggleExtraDesign(name, price, element) {
+            extraDesignActive = !extraDesignActive;
+            if (extraDesignActive) {
+                element.classList.add('active');
+            } else {
+                element.classList.remove('active');
+            }
+            updateSummary();
+        }
+
+        function updateRepair(change) {
+            repairCount += change;
+            if (repairCount < 0) repairCount = 0;
+            
+            document.getElementById('repairCount').innerText = repairCount;
+            updateSummary();
+        }
+
+        function updateSummary() {
+            document.getElementById('selectedServiceName').innerText = currentService.name;
+            document.getElementById('selectedServicePrice').innerText = currentService.price + ' ₸';
+
+            let repairCost = 0;
+            const repairRow = document.getElementById('repairSummaryRow');
+            if (repairCount > 2) {
+                let extraNails = repairCount - 2;
+                repairCost = extraNails * 500;
+                repairRow.style.display = 'flex';
+                document.getElementById('repairText').innerText = `Донаращивание (${repairCount} шт.)`;
+                document.getElementById('repairPrice').innerText = `+${repairCost} ₸`;
+            } else if (repairCount > 0) {
+                repairRow.style.display = 'flex';
+                document.getElementById('repairText').innerText = `Донаращивание (${repairCount} шт. вх. в стоим.)`;
+                document.getElementById('repairPrice').innerText = `0 ₸`;
+            } else {
+                repairRow.style.display = 'none';
+            }
+
+            const extraRow = document.getElementById('extraSummaryRow');
+            let extraCost = 0;
+            if (extraDesignActive) {
+                extraRow.style.display = 'flex';
+                extraCost = extraDesignPrice;
+            } else {
+                extraRow.style.display = 'none';
+            }
+
+            let total = currentService.price + repairCost + extraCost;
+            document.getElementById('totalPrice').innerText = total + ' ₸';
+        }
+
+        updateSummary();
+    </script>
+</body>
+</html>
